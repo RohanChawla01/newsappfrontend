@@ -5,17 +5,17 @@ Initially, on first load the app displays the latest UK News.
 You have the option to search latest news about any topic worldwide, using the search bar at the top.
 
 Tech Stack:
-Language: JavaScript
-ReactJS as frontend library
-Node version: 12.14.1
-npm version: 6.13.4
+Language: JavaScript,
+ReactJS as frontend library,
+Node version: 12.14.1,
+npm version: 6.13.4,
 
 Editor used: VSCode
 
 ### TO RUN The app on your machine
 
 1. First do npm install to install third party dependencies
-2. You can run npm start script to load project at http://localhost:3000 in browser.
+2. You can run npm start script at the root to load project at http://localhost:3000 in browser.
 
 # Getting Started with Create React App
 

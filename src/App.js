@@ -1,9 +1,17 @@
+import React from "react";
+import { BrowserRouter, Route, withRouter } from "react-router-dom";
+
+import { Routing } from "./hoc/Routing/routing";
+import { StoreContextProvider } from "./store/storeContext";
 import "./common.css";
-import { LandingPage } from "./screens/Landing/landing";
 
 const App = () => (
   <div className="App">
-    <LandingPage />
+    <BrowserRouter>
+      <StoreContextProvider>
+        <Route path="/*" component={Routing} />
+      </StoreContextProvider>
+    </BrowserRouter>
   </div>
 );
 

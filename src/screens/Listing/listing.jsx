@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import moment from "moment";
+import { useHistory } from "react-router-dom";
 
 import {
   newsList,
@@ -11,12 +12,16 @@ import {
 } from "../../types/NewsListing/listing.d";
 import { NewsListing } from "../../components/NewsListing/listing";
 import "./style.css";
+import { StoreContext } from "../../store/storeContext";
 
 const icons = {
   refresh: require("../../assets/icons/reload.png").default, // .default used because of https://github.com/facebook/create-react-app/issues/9992
 };
 
-export const LandingPage = () => {
+const ListingScreen = () => {
+  const history = useHistory();
+  const context = useContext(StoreContext);
+
   const [page, setPage] = useState(1);
   const [totalResults, setTotalResults] = useState(undefined);
   const [hasMore, setHasMore] = useState(true);
@@ -115,6 +120,12 @@ export const LandingPage = () => {
     setShowQueriedNews(false);
   };
 
+  const onNewsClick = (current: NewsArticle) => {
+    const { actions } = context;
+    actions.setCurrentNewsData(current);
+    history.push("/details");
+  };
+
   return (
     <>
       <div className="headerContainer">
@@ -145,9 +156,12 @@ export const LandingPage = () => {
             news={news}
             hasMore={hasMore}
             getMoreData={getMoreData}
+            onClick={onNewsClick}
           />
         )}
       </div>
     </>
   );
 };
+
+export default ListingScreen;

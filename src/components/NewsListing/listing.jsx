@@ -12,10 +12,11 @@ interface Props {
   hasMore: Boolean;
   getMoreData: () => void;
   news: NewsResponse[];
+  onClick: (news: NewsArticle) => void;
 }
 
 export const NewsListing = (props: Props) => {
-  const { news, hasMore, getMoreData } = props;
+  const { news, hasMore, getMoreData, onClick } = props;
 
   const renderEndMessage = () => (
     <h3 className="ta-c">No more news to load!</h3>
@@ -31,7 +32,7 @@ export const NewsListing = (props: Props) => {
     >
       {news &&
         news.map((current: NewsArticle, index) => (
-          <NewsBox news={current} key={index} />
+          <NewsBox news={current} key={index} onClick={onClick} />
         ))}
     </InfiniteScroll>
   );

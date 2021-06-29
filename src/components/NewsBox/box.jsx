@@ -6,14 +6,15 @@ import "./style.css";
 
 interface Props {
   news: NewsArticle;
+  onClick: (news: NewsArticle) => void;
 }
 
 export const NewsBox = (props: Props) => {
-  const { news } = props;
+  const { news, onClick } = props;
   const [ref, loaded, onLoad] = useImageLoaded();
 
   return (
-    <div className="post">
+    <div className="post" onClick={() => onClick(news)}>
       <div>
         <img
           ref={ref}
